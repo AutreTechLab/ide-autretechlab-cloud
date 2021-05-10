@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../ATL_Robotics_IDE/.idea/ALT_Robotics_IDE.iml" filepath="$PROJECT_DIR$/../ATL_Robotics_IDE/.idea/ALT_Robotics_IDE.iml" />
       <module fileurl="file://$PROJECT_DIR$/../ATL_Mermaid_Blockly_Editor/.idea/ATL_Mermaid_Blockly_Editor.iml" filepath="$PROJECT_DIR$/../ATL_Mermaid_Blockly_Editor/.idea/ATL_Mermaid_Blockly_Editor.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ide-autretechlab-cloud.iml" filepath="$PROJECT_DIR$/.idea/ide-autretechlab-cloud.iml" />
     </modules>
