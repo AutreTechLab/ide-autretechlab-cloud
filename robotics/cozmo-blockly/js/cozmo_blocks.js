@@ -1,3 +1,4 @@
+document.getElementById("cozmoBlocks").innerHTML = '
     <category name="{catCozmo}" colour="96">
       <category name="{catCozmoEvents}" colour="96">
         <block type="cozmo_on_cube_tapped">
@@ -177,3 +178,4 @@
         </block>
       </category>
      </category>
+';

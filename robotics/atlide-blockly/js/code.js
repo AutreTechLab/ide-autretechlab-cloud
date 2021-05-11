@@ -337,14 +337,14 @@ Code.renderContent = function() {
     Code.workspace.setVisible(true);
     var parsedUrl = new URL(window.location.href);
     var atl_IDE_browser_host = parsedUrl.hostname;
-    var ws = new WebSocket("ws://" + atl_IDE_browser_host + ":8080/blocksSub"); //DODO
-        ws.onopen = function() {
-        ws.send("Server HOST Host =" + atl_IDE_browser_host);
-            };
-        ws.onmessage = function (evt) {
-      //      alert(evt.data);
-            Code.workspace.highlightBlock(evt.data);
-        };
+//    var ws = new WebSocket("ws://" + atl_IDE_browser_host + ":8080/blocksSub"); //DODO
+//        ws.onopen = function() {
+//        ws.send("Server HOST Host =" + atl_IDE_browser_host);
+//            };
+//        ws.onmessage = function (evt) {
+//      //      alert(evt.data);
+//            Code.workspace.highlightBlock(evt.data);
+//        };
   } else if (Code.selected == 'camera') {
     Code.startCamera();
     var parsedUrl = new URL(window.location.href);

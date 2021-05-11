@@ -66,6 +66,12 @@
 <!--  <script src="atlide-blockly/js/AwsCognitoVerifier.js"></script>-->
 <!--  <script src="atlide-blockly/js/AwsCognitoUserprofile.js"></script>-->
 
+  <script>
+    $(function(){
+      $("#thymioBlocks").load("thymio-blockly/thymio_blocks.html");
+    });
+  </script>
+
 </head>
 <body>
 
@@ -441,9 +447,9 @@ Tabs in the Blockly Workspace
     </category>
     <sep></sep>
     <!-- Includes Cozmo block -->
-    {% raw cozmo_blocks %}
+    <div id="cozmoBlocks" class="mermaid"> </div>
     <!-- Start of THYMIO related Blocks-->
-    {% raw thymio_blocks %}
+    <div id="thymioBlocks" class="mermaid"> </div>
     <sep></sep>
     <category name="{catFunStuff}" colour="210">
       <block type="atl_logo"></block>
