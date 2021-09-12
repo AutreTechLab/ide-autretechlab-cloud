@@ -1,4 +1,4 @@
-# Blockly Development envvironments
+# Blockly Development environments
 | Environment   | Description |
 |---------------|-------------|
 | Thymio-01     | Run predefined scenarios and get familiar with the Blockly programming environment and the Thymio robot. | 
