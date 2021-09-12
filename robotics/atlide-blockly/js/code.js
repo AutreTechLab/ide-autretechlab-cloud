@@ -946,8 +946,8 @@ Code.discard = function() {
 };
 // LOCALIZATION
 // Load the ATL IDE Blockly Extensions language strings.
-document.write('<script src="atlide-blockly/msg/' + Code.LANG + '.js"></script>\n');
+document.write('<script src="../robotics/atlide-blockly/msg/' + Code.LANG + '.js"></script>\n');
 // Load Blockly's language strings.
-document.write('<script src="/blockly/msg/js/' + Code.LANG + '.js"></script>\n');
+document.write('<script src="../blockly/msg/js/' + Code.LANG + '.js"></script>\n');
 
 window.addEventListener('load', Code.init);
