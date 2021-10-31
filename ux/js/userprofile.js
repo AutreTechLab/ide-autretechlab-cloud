@@ -6,7 +6,7 @@ var domain = "autretechlabcloud";
 var region = "eu-central-1";
 var appClientId = "15m6qtnt2h45eibrn02p693311";
 var userPoolId = "eu-central-1_ybmcg1P5X";
-var redirectURI = "ide.autretechlab.cloud/ux/robotbridge.html";
+var redirectURI = "https://ide.autretechlab.cloud/ux/robotbridge.html";
 
 //https://atl-ux.s3.eu-central-1.amazonaws.com/mermaid_ide/auth.html?
 //code=4699595b-c628-48c0-bbb7-1d03229c6a2c
