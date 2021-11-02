@@ -126,7 +126,7 @@ async function main() {
   method: 'post',
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded',
-    'Access-Control-Allow-Origin:' '*'
+    'Access-Control-Allow-Origin': '*'
   }})
   .then((response) => {
     return response.json();
@@ -152,7 +152,7 @@ async function main() {
       method: 'post',
       headers: {
         'authorization': 'Bearer ' + tokens.access_token,
-        'Access-Control-Allow-Origin:' '*'
+        'Access-Control-Allow-Origin': '*'
     }})
     .then((response) => {
       return response.json();
