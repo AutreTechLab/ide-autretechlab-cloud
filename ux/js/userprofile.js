@@ -1,5 +1,7 @@
 var myHeaders = new Headers();
-myHeaders.set('Cache-Control', 'no-store');
+myHeaders.set('Cache-Control', 'no-store',
+              'Access-Control-Allow-Origin', '*'
+    );
 var urlParams = new URLSearchParams(window.location.search);
 var tokens;
 var domain = "auth.autretechlab.cloud"; 
@@ -17,18 +19,7 @@ if (AmazonCognitoDomain){
 } else {
     cognitoDomain = "https://"+domain;
 }
-console.log("Cognito Domain =" + cognitoDomain);
-
-//https://atl-ux.s3.eu-central-1.amazonaws.com/mermaid_ide/auth.html?
-//code=4699595b-c628-48c0-bbb7-1d03229c6a2c
-//&state=0000000093425818140000005100055006875
-
-//https://autretechlab.auth.eu-central-1.amazoncognito.com/oauth2/token?
-//grant_type=authorization_code
-//&client_id=3qfmdgmqd367hvq4iuq1o80b3d
-//&code_verifier=3502637000240000000026042760125828008680
-//&redirect_uri=https://atl-ux.s3.eu-central-1.amazonaws.com/mermaid_ide/auth.html
-//&code=0b590f90-e7f6-4333-a372-8e0465861625
+console.log("Cognito Domain = " + cognitoDomain);
 
 //Convert Payload from Base64-URL to JSON
 const decodePayload = payload => {
@@ -54,7 +45,6 @@ const parseJWTPayload = token => {
 const parseJWTHeader = token => {
     const [header, payload, signature] = token.split('.');
     const jsonHeader = decodePayload(header)
-
     return jsonHeader
 };
 
@@ -109,8 +99,8 @@ async function main() {
     // Redirtect user-agent to /authorize endpoint
     location.href = cognitoDomain+"/oauth2/authorize?response_type=code&state="+state+"&client_id="+appClientId+"&redirect_uri="+redirectURI+"&scope=openid&code_challenge_method=S256&code_challenge="+code_challenge; 
     console.log(location.href);
+    console.log('code_challenge = ' + code_challenge)
   } else {
-
     // Verify state matches
     state = urlParams.get('state');
     console.log("Verify state matches -> code" , code)
