@@ -30,7 +30,7 @@ const decodePayload = payload => {
     return `${acc}%${uriEncodedChar}`
   }, '')
   const jsonPayload = decodeURIComponent(uriEncodedPayload);
-  alert(jsonPayload)
+  console.log('jsonPayload ' + jsonPayload)
   return JSON.parse(jsonPayload)
 }
 
@@ -87,7 +87,7 @@ async function main() {
     // Create PKCE code verifier
     var state = getRandomString();
     sessionStorage.setItem("pkce_state", state);
-    console.log("pkce_state", state);
+    console.log("sessionStorage->pkce_state", state);
     var code_verifier = getRandomString();
     sessionStorage.setItem("code_verifier", code_verifier);
     console.log("code_verifier", code_verifier);
@@ -106,9 +106,8 @@ async function main() {
     console.log("Verify state matches -> code" , code)
     console.log("Verify state matches -> state:" , state)
     if(sessionStorage.getItem("pkce_state") != state) {
-        alert("Invalid state");
+        console.log("Invalid state :" + sessionStorage.getItem("pkce_state") " is not equal to" + state);
     } else {
-
     // Fetch OAuth2 tokens from Cognito
     code_verifier = sessionStorage.getItem('code_verifier');
  // await fetch("https://"+domain+".auth."+region+".amazoncognito.com/oauth2/token?grant_type=authorization_code&client_id="+appClientId+"&code_verifier="+code_verifier+"&redirect_uri="+redirectURI+"&code="+ code,{
@@ -127,12 +126,12 @@ async function main() {
     var idVerified = verifyToken (tokens.id_token);
     Promise.resolve(idVerified).then(function(value) {
       if (value.localeCompare("verified")){
-        alert("Invalid ID Token - "+ value);
+        console.log("Invalid ID Token - "+ value);
         return;
       }
       });
     // Display tokens
-    alert(tokens.id_token)
+    console.log(tokens.id_token)
     document.getElementById("id_token").innerHTML = JSON.stringify(parseJWTPayload(tokens.id_token),null,'\t');
     document.getElementById("access_token").innerHTML = JSON.stringify(parseJWTPayload(tokens.access_token),null,'\t');
   });
