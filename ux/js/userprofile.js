@@ -106,7 +106,7 @@ async function main() {
     console.log("Verify state matches -> code" , code)
     console.log("Verify state matches -> state:" , state)
     if(sessionStorage.getItem("pkce_state") != state) {
-        console.log("Invalid state :" + sessionStorage.getItem("pkce_state") " is not equal to" + state);
+        console.log("Invalid state :" + sessionStorage.getItem("pkce_state") + " is not equal to" + state);
     } else {
     // Fetch OAuth2 tokens from Cognito
     code_verifier = sessionStorage.getItem('code_verifier');
