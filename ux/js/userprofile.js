@@ -2,11 +2,22 @@ var myHeaders = new Headers();
 myHeaders.set('Cache-Control', 'no-store');
 var urlParams = new URLSearchParams(window.location.search);
 var tokens;
-var domain = "autretechlabcloud";
+var domain = "auth.autretechlab.cloud"; 
+var AmazonCognitoDomain = false // Default is true
+        // true = Amazon Cognito domain
+        // false = Your own domain
 var region = "eu-central-1";
 var appClientId = "15m6qtnt2h45eibrn02p693311";
 var userPoolId = "eu-central-1_ybmcg1P5X";
 var redirectURI = "https://ide.autretechlab.cloud/ux/robotbridge.html";
+
+var cognitoDomain ="";
+if (AmazonCognitoDomain){
+    cognitoDomain = "https://"+domain+".auth."+region+".amazoncognito.com";
+} else {
+    cognitoDomain = "https://"+domain;
+}
+console.log("Cognito Domain =" + cognitoDomain);
 
 //https://atl-ux.s3.eu-central-1.amazonaws.com/mermaid_ide/auth.html?
 //code=4699595b-c628-48c0-bbb7-1d03229c6a2c
@@ -96,7 +107,7 @@ async function main() {
     sessionStorage.setItem("code_challenge", code_challenge);
     console.log("code_challenge", code_challenge);
     // Redirtect user-agent to /authorize endpoint
-    location.href = "https://"+domain+".auth."+region+".amazoncognito.com/oauth2/authorize?response_type=code&state="+state+"&client_id="+appClientId+"&redirect_uri="+redirectURI+"&scope=openid&code_challenge_method=S256&code_challenge="+code_challenge;
+    location.href = cognitoDomain+"/oauth2/authorize?response_type=code&state="+state+"&client_id="+appClientId+"&redirect_uri="+redirectURI+"&scope=openid&code_challenge_method=S256&code_challenge="+code_challenge; 
     console.log(location.href);
   } else {
 
@@ -110,7 +121,8 @@ async function main() {
 
     // Fetch OAuth2 tokens from Cognito
     code_verifier = sessionStorage.getItem('code_verifier');
-  await fetch("https://"+domain+".auth."+region+".amazoncognito.com/oauth2/token?grant_type=authorization_code&client_id="+appClientId+"&code_verifier="+code_verifier+"&redirect_uri="+redirectURI+"&code="+ code,{
+ // await fetch("https://"+domain+".auth."+region+".amazoncognito.com/oauth2/token?grant_type=authorization_code&client_id="+appClientId+"&code_verifier="+code_verifier+"&redirect_uri="+redirectURI+"&code="+ code,{
+  await fetch(cognitoDomain+"/oauth2/token?grant_type=authorization_code&client_id="+appClientId+"&code_verifier="+code_verifier+"&redirect_uri="+redirectURI+"&code="+ code,{
   method: 'post',
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded'
