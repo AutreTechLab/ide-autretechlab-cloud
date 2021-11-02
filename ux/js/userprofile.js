@@ -114,8 +114,7 @@ async function main() {
   await fetch(cognitoDomain+"/oauth2/token?grant_type=authorization_code&client_id="+appClientId+"&code_verifier="+code_verifier+"&redirect_uri="+redirectURI+"&code="+ code,{
   method: 'post',
   headers: {
-    'Content-Type': 'application/x-www-form-urlencoded',
-    'Access-Control-Allow-Origin': '*'
+    'Content-Type': 'application/x-www-form-urlencoded'
   }})
   .then((response) => {
     return response.json();
