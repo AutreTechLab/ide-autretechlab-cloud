@@ -147,7 +147,7 @@ async function main() {
   });
 
     // Fetch from /user_info
-    await fetch("https://"+domain+".auth."+region+".amazoncognito.com/oauth2/userInfo",{
+    await fetch(cognitoDomain+"/oauth2/userInfo",{
       method: 'post',
       headers: {
         'authorization': 'Bearer ' + tokens.access_token,
