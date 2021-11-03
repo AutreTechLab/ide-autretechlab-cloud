@@ -6,7 +6,7 @@ var key_index;
 async function verifyToken (token) {
 //get Cognito keys
 keys_url = 'https://cognito-idp.'+ region +'.amazonaws.com/' + userPoolId + '/.well-known/jwks.json';
-alert(keys_url)
+console.log("keys_url" + keys_url)
 await fetch(keys_url)
 .then((response) => {
 return response.json();

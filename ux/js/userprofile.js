@@ -4,7 +4,7 @@ myHeaders.set('Cache-Control', 'no-store',
     );
 var urlParams = new URLSearchParams(window.location.search);
 var tokens;
-var domain = "auth.autretechlab.cloud"; 
+var domain = "auth.ide.autretechlab.cloud";
 var AmazonCognitoDomain = false // Default is true
         // true = Amazon Cognito domain
         // false = Your own domain
@@ -130,7 +130,7 @@ async function main() {
       }
       });
     // Display tokens
-    console.log(tokens.id_token)
+    console.log("tokens.id_token " + tokens.id_token)
     document.getElementById("id_token").innerHTML = JSON.stringify(parseJWTPayload(tokens.id_token),null,'\t');
     document.getElementById("access_token").innerHTML = JSON.stringify(parseJWTPayload(tokens.access_token),null,'\t');
   });
